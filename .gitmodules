@@ -1,0 +1,3 @@
+[submodule "followthemoney"]
+	path = followthemoney
+	url = git@github.com:nazarnazar/followthemoney.git

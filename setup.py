@@ -57,6 +57,7 @@ setup(
             "video = ingestors.media.video:VideoIngestor",
             "ftm = ingestors.misc.ftm:FtMIngestor",
             "json = ingestors.misc.jsonfile:JSONIngestor",
+            "openvpn = ingestors.documents.openvpn:OpenVpnIngestor",
         ],
         "console_scripts": ["ingestors = ingestors.cli:cli"],
     },

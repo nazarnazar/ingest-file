@@ -121,6 +121,9 @@ RUN groupadd -g 1000 -r app \
 RUN mkdir /models/ && \
     curl -o "/models/model_type_prediction.ftz" "https://public.data.occrp.org/develop/models/types/type-08012020-7a69d1b.ftz"
 
+COPY . /ingestors
+WORKDIR /ingestors
+
 # Having updated pip/setuptools seems to break the test run for some reason (12/01/2022)
 # RUN pip3 install --no-cache-dir -U pip setuptools
 COPY requirements.txt /tmp/
@@ -146,8 +149,6 @@ RUN python3 -m spacy download el_core_news_sm \
     && python3 -m spacy download da_core_news_sm
 # RUN python3 -m spacy download zh_core_web_sm
 
-COPY . /ingestors
-WORKDIR /ingestors
 RUN pip3 install --no-cache-dir --config-settings editable_mode=compat --use-pep517 -e /ingestors
 RUN chown -R app:app /ingestors
 
